@@ -8,8 +8,6 @@ The following steps help you to install and configure the required prerequisites
 
 1. Install Docker\. Note: Docker is only a prerequisite for testing your application locally\.
 
-1. Install Homebrew\.
-
 1. Install the AWS SAM CLI\.
 
 ## Step 1: Create an AWS Account<a name="serverless-sam-cli-install-linux-aws-account"></a>
@@ -82,46 +80,32 @@ In some cases, you may need to reboot your instance to provide permissions for t
 
 If you run into issues installing Docker, see the [Troubleshooting](#serverless-sam-cli-install-linux-troubleshooting) section later in this guide, or the [Troubleshooting](https://docs.docker.com/install/linux/linux-postinstall/#troubleshooting) section of the *Docker installation guide* for additional troubleshooting tips\.
 
-## Step 4: Install Homebrew<a name="serverless-sam-cli-install-linux-homebrew"></a>
+## Step 4: Install the AWS SAM CLI<a name="serverless-sam-cli-install-linux-sam-cli"></a>
 
-The recommended approach for installing the AWS SAM CLI on Linux is to use the Homebrew package manager\. For more information about Homebrew, see [Homebrew Documentation](https://docs.brew.sh/Homebrew-on-Linux)\.
+You will need [Python 3](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/installing/) installed on your system. Most linux distribution will already have this installed.
 
-To install Homebrew, run the following:
-
-```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-```
-
-Next, add Homebrew to your PATH by running the following commands\. These commands work on all major flavors of Linux by adding either `~/.profile` on Debian/Ubuntu or `~/.bash_profile` on CentOS/Fedora/RedHat:
+Verify that pip is installed:
 
 ```
-test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
-echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+pip --version
+
+# You might need to use pip3 to use Python 3.
+pip3 --version
 ```
 
-Verify that Homebrew is installed:
+You should see output like the following:
 
 ```
-brew --version
+pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
 ```
 
-You should see output like the following on successful installation of Homebrew:
+If you see `(python 2.x)` you should try `pip3`.
 
-```
- 
- Homebrew 2.1.6 
- Homebrew/homebrew-core (git revision ef21; last commit 2019-06-19)
-```
 
-## Step 5: Install the AWS SAM CLI<a name="serverless-sam-cli-install-linux-sam-cli"></a>
+Follow these steps to install the AWS SAM CLI using pip:
 
-Follow these steps to install the AWS SAM CLI using Homebrew:
-
-```
-brew tap aws/tap
-brew install aws-sam-cli
+```bash
+pip3 install --user aws-sam-cli
 ```
 
 Verify the installation:
@@ -134,7 +118,7 @@ You should see output like the following after successful installation of the AW
 
 ```
  
- SAM CLI, version 0.33.0
+ SAM CLI, version 0.43.0
 ```
 
 You're now ready to start development\.
